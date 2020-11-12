@@ -20,8 +20,6 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: DB_CONNECTION
-          value: mariadb
         - name: DB_HOST
           value: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-db-service
         - name: DB_PORT
@@ -29,15 +27,15 @@ spec:
         - name: DB_DATABASE
           valueFrom:
             secretKeyRef:
-              name: laravel-key
+              name: php-key
               key: DB_DATABASE
         - name: DB_USERNAME
           valueFrom:
             secretKeyRef:
-              name: laravel-key
+              name: php-key
               key: DB_USERNAME
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: laravel-key
+              name: php-key
               key: DB_PASSWORD

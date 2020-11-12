@@ -19,3 +19,10 @@ stages:
         dockerfilePath: ./php/Dockerfile
         buildContext: .
         tag: ${CICD_GIT_REPO_NAME}-web:${CICD_GIT_BRANCH}-${CICD_EXECUTION_SEQUENCE}
+
+  - name: deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH} web
+    steps:
+    - applyYamlConfig:
+        path: ./php/k8s-yaml/php-deployment.yaml
+    - applyYamlConfig:
+        path: ./php/k8s-yaml/php-service.yaml
