@@ -23,7 +23,7 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: laravel-key
+              name: php-key
               key: MYSQL_ROOT_PASSWORD
       - name: phpmyadmin
         image: phpmyadmin:apache
