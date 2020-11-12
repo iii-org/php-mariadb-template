@@ -1,0 +1,30 @@
+stages:
+  - name: Publish DB image
+    steps:
+    - publishImageConfig:
+        dockerfilePath: ./mariadb/Dockerfile
+        buildContext: .
+        tag: ${CICD_GIT_REPO_NAME}-db:${CICD_GIT_BRANCH}-${CICD_EXECUTION_SEQUENCE}
+
+  - name: deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH} db
+    steps:
+    - applyYamlConfig:
+        path: ./mariadb/k8s-deploy/mariadb-deployment.yaml
+    - applyYamlConfig:
+        path: ./mariadb/k8s-deploy/mariadb-service.yaml
+
+  - name: Publish php image
+    steps:
+    - publishImageConfig:
+        dockerfilePath: ./php/Dockerfile
+        buildContext: .
+        tag: ${CICD_GIT_REPO_NAME}-web:${CICD_GIT_BRANCH}-${CICD_EXECUTION_SEQUENCE}
+      env:
+        PLUGIN_MTU: 1450
+
+  - name: deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH} web
+    steps:
+    - applyYamlConfig:
+        path: ./php/k8s-yaml/php-deployment.yaml
+    - applyYamlConfig:
+        path: ./php/k8s-yaml/php-service.yaml
