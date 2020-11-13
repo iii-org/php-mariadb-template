@@ -5,6 +5,12 @@ stages:
         dockerfilePath: ./mariadb/Dockerfile
         buildContext: .
         tag: ${CICD_GIT_REPO_NAME}-db:latest
+<<<<<<< HEAD
+=======
+    when:
+      branch:
+        exclude: [test-src]
+>>>>>>> test-src
 
   - name: deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH} db
     steps:
@@ -19,6 +25,12 @@ stages:
         dockerfilePath: ./php/Dockerfile
         buildContext: .
         tag: ${CICD_GIT_REPO_NAME}-web:latest
+<<<<<<< HEAD
+=======
+    when:
+      branch:
+        exclude: [test-src]
+>>>>>>> test-src
 
   - name: deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH} web
     steps:
