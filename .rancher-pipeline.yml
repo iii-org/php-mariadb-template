@@ -4,7 +4,7 @@ stages:
     - publishImageConfig:
         dockerfilePath: ./mariadb/Dockerfile
         buildContext: .
-        tag: ${CICD_GIT_REPO_NAME}-db:${CICD_GIT_BRANCH}-${CICD_EXECUTION_SEQUENCE}
+        tag: ${CICD_GIT_REPO_NAME}-db:latest
     when:
       branch:
         exclude: [test-src]
@@ -21,7 +21,7 @@ stages:
     - publishImageConfig:
         dockerfilePath: ./php/Dockerfile
         buildContext: .
-        tag: ${CICD_GIT_REPO_NAME}-web:${CICD_GIT_BRANCH}-${CICD_EXECUTION_SEQUENCE}
+        tag: ${CICD_GIT_REPO_NAME}-web:latest
     when:
       branch:
         exclude: [test-src]
