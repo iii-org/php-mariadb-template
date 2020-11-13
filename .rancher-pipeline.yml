@@ -4,7 +4,7 @@ stages:
     - publishImageConfig:
         dockerfilePath: ./mariadb/Dockerfile
         buildContext: .
-        tag: ${CICD_GIT_REPO_NAME}-db:$latest
+        tag: ${CICD_GIT_REPO_NAME}-db:latest
 
   - name: deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH} db
     steps:
