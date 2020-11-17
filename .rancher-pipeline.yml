@@ -1,4 +1,17 @@
 stages:
+  - name: Test--Delete environment
+    steps: 
+    - runScriptConfig:
+        image: iiiorg/rancher-cli:v2.4.6
+        shellScript: rancher login ${rancher_url} -t ${rancher_api_token} --skip-verify; rancher kubectl delete deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-db; rancher kubectl delete svc ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-db-service; rancher kubectl delete deploy ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-web; rancher kubectl delete svc ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-web-service
+      envFrom:
+      - sourceName: rancher-url
+        sourceKey: rancher_url
+        targetKey: rancher_url
+      - sourceName: pipeline-api-key
+        sourceKey: API_TOKEN
+        targetKey: rancher_api_token
+
   - name: Publish DB image
     steps:
     - publishImageConfig:

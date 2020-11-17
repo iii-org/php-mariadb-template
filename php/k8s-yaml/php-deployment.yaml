@@ -20,7 +20,11 @@ spec:
         ports:
         - containerPort: 80
         env:
+<<<<<<< HEAD
         - name: gitlab_token 
+=======
+        - name: gitlab_token
+>>>>>>> 675e43b9d869e2742dcb9d12b2b76d11b1e945d7
           valueFrom:
             secretKeyRef:
               name: gitlab-token
