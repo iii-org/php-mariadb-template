@@ -20,6 +20,11 @@ spec:
         ports:
         - containerPort: 80
         env:
+        - name: gitlab_token 
+          valueFrom:
+            secretKeyRef:
+              name: gitlab-token
+              key: gitlab-token
         - name: GIT_URL
           value: ${CICD_GIT_URL}
         - name: GIT_REPO
