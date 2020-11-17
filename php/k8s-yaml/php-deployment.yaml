@@ -24,7 +24,7 @@ spec:
           valueFrom:
             secretKeyRef:
               name: gitlab-token
-              key: gitlab-token
+              key: git-token
         - name: GIT_URL
           value: ${CICD_GIT_URL}
         - name: GIT_REPO
