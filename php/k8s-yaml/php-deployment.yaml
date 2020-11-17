@@ -27,6 +27,8 @@ spec:
               key: git-token
         - name: GIT_URL
           value: ${CICD_GIT_URL}
+        - name: GIT_BRANCH
+          value: ${CICD_GIT_BRANCH}
         - name: GIT_REPO
           value: ${CICD_GIT_REPO_NAME}
         - name: DB_HOST
