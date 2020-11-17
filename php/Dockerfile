@@ -8,4 +8,4 @@ COPY ./php/src /var/www/html
 
 EXPOSE 80
 
-#CMD sh /var/www/startup.sh && /etc/init.d/apache2 start
+CMD sh /var/www/startup.sh && /etc/init.d/apache2 start
