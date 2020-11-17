@@ -11,6 +11,8 @@ stages:
       - sourceName: pipeline-api-key
         sourceKey: API_TOKEN
         targetKey: rancher_api_token
+    when:
+      branch: [test-src]
 
   - name: Publish DB image
     steps:
